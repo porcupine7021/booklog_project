@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.porcupine.bookLog.user.mapper.UserMapper">
+
+    <!-- 모든 사용자 조회 -->
+    <select id="findAll" resultType="com.porcupine.bookLog.user.dto.User">
+        SELECT * FROM users
+    </select>
+    <!--특정 사용자 이름 검색-->
+    <select id="findByEmail" resultType="com.porcupine.bookLog.user.dto.User" parameterType="String">
+        SELECT * FROM users WHERE email = #{email}
+    </select>
+    <!--회원가입(간단히)-->
+    <insert id="insert" parameterType="com.porcupine.bookLog.user.dto.User">
+        INSERT INTO users (email, password_hash, nickname)
+        VALUES (#{email}, #{passwordHash}, #{nickname})
+    </insert>
+    <!--회원 정보 수정-->
+    <update id="update" parameterType="User">
+        UPDATE users SET email = #{email},
+                        password_hash = #{passwordHash},
+                        nickname = #{nickname}
+              WHERE id=#{id}
+    </update>
+
+</mapper>

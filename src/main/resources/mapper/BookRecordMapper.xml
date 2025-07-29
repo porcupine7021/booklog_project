@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.porcupine.bookLog.bookRecord.mapper.BookRecordMapper">
+
+    <!--책 기록 -->
+    <insert id="insertBookRecord" parameterType="com.porcupine.bookLog.bookRecord.dto.BookRecordDTO">
+        INSERT INTO book_records (user_id, book_id, rating, read_date)
+        VALUES (#{userId}, #{bookId}, #{rating}, #{readDate})
+    </insert>
+
+    <!--책 기록 검색-->
+    <select id="getBookRecord" resultType="BookRecordDTO">
+        select * from book_records where user_id =#{userId}
+    </select>
+
+    <!--책 기록 수정-->
+    <update id="updateRecord" parameterType="BookRecordDTO">
+        update book_records
+        set rating = #{rating}, read_date = #{readDate}
+        where book_id = #{bookRecodeId}
+    </update>
+
+    <!--책 기록 삭제-->
+    <delete id="deleteRecord" parameterType="int">
+        delete from book_records where book_id = #{bookRecodeId}
+    </delete>
+
+
+</mapper>
