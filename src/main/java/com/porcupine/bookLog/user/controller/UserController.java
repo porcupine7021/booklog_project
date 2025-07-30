@@ -115,7 +115,7 @@ public class UserController {
         updateUser.setId(loggedUser.getId()); // 현재 로그인된 사용자 기준으로 수정
         userService.updateUser(updateUser); // controller는 service 호출만 하면 됨
 
-        // 세션 정보 갱신
+        // 세션 정보 갱신 rodtls
         User refreshedUser = userService.findByEmail(updateUser.getEmail());
         session.setAttribute("user", refreshedUser);
 
@@ -129,7 +129,7 @@ public class UserController {
         return ResponseEntity.ok(idDuplicate);
         //true면 중복 false 면 사용 가능
 
-        //test
+        //
     }
 
 
