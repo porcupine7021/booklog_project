@@ -128,7 +128,11 @@ public class UserController {
         boolean idDuplicate = userService.isEmailDuplicate(email);
         return ResponseEntity.ok(idDuplicate);
         //true면 중복 false 면 사용 가능
+
+        //test
     }
+
+
 
 
 }
